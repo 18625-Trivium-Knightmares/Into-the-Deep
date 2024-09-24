@@ -23,37 +23,45 @@ public class TeleOpPlaceholder extends LinearOpMode {
         FL = hardwareMap.get(DcMotor.class, "leftFront");
         BR = hardwareMap.get(DcMotor.class, "rightBack");
         BL = hardwareMap.get(DcMotor.class, "leftBack");
-
         FL.setDirection(DcMotorSimple.Direction.REVERSE);
         BL.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        FR.setPower(defaultpower);
-        FL.setPower(defaultpower);
-        BR.setPower(defaultpower);
-        BL.setPower(defaultpower);
+        waitForStart();
+        while(opModeIsActive()) {
+            double gamepadpower = gamepad1.left_stick_y;
+            double gamepadpowerright = gamepad1.right_stick_y;
+            FR.setPower(gamepadpowerright);
+            BR.setPower(gamepadpowerright);
+            FL.setPower(gamepadpower);
+            BL.setPower(gamepadpower);
+           /* FR.setPower(defaultpower);
+            FL.setPower(defaultpower);
+            BR.setPower(defaultpower);
+            BL.setPower(defaultpower);
 
-        sleep(defaultdelay);
+            sleep(defaultdelay);
 
-        FR.setPower(defaultnegativepower);
-        FL.setPower(defaultnegativepower);
-        BR.setPower(defaultpower);
-        BL.setPower(defaultpower);
+            FR.setPower(defaultnegativepower);
+            FL.setPower(defaultnegativepower);
+            BR.setPower(defaultpower);
+            BL.setPower(defaultpower);
 
-        sleep(defaultdelay);
+            sleep(defaultdelay);
 
-        FR.setPower(defaultnegativepower);
-        FL.setPower(defaultnegativepower);
-        BR.setPower(defaultnegativepower);
-        BL.setPower(defaultnegativepower);
+            FR.setPower(defaultnegativepower);
+            FL.setPower(defaultnegativepower);
+            BR.setPower(defaultnegativepower);
+            BL.setPower(defaultnegativepower);
 
-        sleep(defaultdelay);
+            sleep(defaultdelay);
 
-        FR.setPower(defaultpower);
-        FL.setPower(defaultpower);
-        BR.setPower(defaultnegativepower);
-        BL.setPower(defaultnegativepower);
+            FR.setPower(defaultpower);
+            FL.setPower(defaultpower);
+            BR.setPower(defaultnegativepower);
+            BL.setPower(defaultnegativepower);
 
-        sleep(defaultdelay);
+            sleep(defaultdelay); */
+        }
     }
 }
 
