@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp (name = " Skunked Robot Centric Drive")
-@Disabled
+//@Disabled
 public class SkunkedTeleOp extends LinearOpMode {
 
     DcMotor FR, FL, BR, BL, arm;
