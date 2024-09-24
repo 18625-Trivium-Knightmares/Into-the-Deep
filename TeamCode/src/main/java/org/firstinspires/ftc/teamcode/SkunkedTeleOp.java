@@ -1,4 +1,3 @@
-// this is placeholder for teleop ignore this if you want to
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
