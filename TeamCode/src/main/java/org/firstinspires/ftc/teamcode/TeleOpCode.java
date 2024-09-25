@@ -6,9 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp (name = " Skunked Robot Centric Drive")
+@TeleOp (name = "Robot Centric Drive")
 //@Disabled
-public class SkunkedTeleOp extends LinearOpMode {
+public class TeleOpCode extends LinearOpMode {
 
     DcMotor FR, FL, BR, BL, arm;
     public static long defaultdelay = 1000;
@@ -17,7 +17,6 @@ public class SkunkedTeleOp extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        // skunked teleop code
         FR = hardwareMap.get(DcMotor.class, "rightFront");
         FL = hardwareMap.get(DcMotor.class, "leftFront");
         BR = hardwareMap.get(DcMotor.class, "rightBack");
@@ -41,33 +40,6 @@ public class SkunkedTeleOp extends LinearOpMode {
             } else {
                 arm.setPower(0);
             }
-           /* FR.setPower(defaultpower);
-            FL.setPower(defaultpower);
-            BR.setPower(defaultpower);
-            BL.setPower(defaultpower);
-
-            sleep(defaultdelay);
-
-            FR.setPower(defaultnegativepower);
-            FL.setPower(defaultnegativepower);
-            BR.setPower(defaultpower);
-            BL.setPower(defaultpower);
-
-            sleep(defaultdelay);
-
-            FR.setPower(defaultnegativepower);
-            FL.setPower(defaultnegativepower);
-            BR.setPower(defaultnegativepower);
-            BL.setPower(defaultnegativepower);
-
-            sleep(defaultdelay);
-
-            FR.setPower(defaultpower);
-            FL.setPower(defaultpower);
-            BR.setPower(defaultnegativepower);
-            BL.setPower(defaultnegativepower);
-
-            sleep(defaultdelay); */
         }
     }
 }
