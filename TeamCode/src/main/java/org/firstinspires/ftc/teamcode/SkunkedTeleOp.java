@@ -32,22 +32,34 @@ public class SkunkedTeleOp extends LinearOpMode {
             BL.setPower(gamepadpower);
             if (gamepad1.a) {
                 arm.setPower(1);
+                telemetry.addData("Arm:", "Up");
+                telemetry.update();
             } else if (gamepad1.b) {
                 arm.setPower(-1);
+                telemetry.addData("Arm:", "Down");
+                telemetry.update();
             } else {
                 arm.setPower(0);
             }
             if (gamepad1.dpad_up) {
                 slide.setPower(1);
+                telemetry.addData("Slides:", "Up");
+                telemetry.update();
             } else if (gamepad1.dpad_down) {
                 slide.setPower(-1);
+                telemetry.addData("Slides:", "Down");
+                telemetry.update();
             } else {
                 slide.setPower(0);
             }
             if (gamepad1.x) {
                 actuator.setPower(1);
+                telemetry.addData("Actuator:", "Up");
+                telemetry.update();
             } else if (gamepad1.y) {
                 actuator.setPower(-1);
+                telemetry.addData("Actuator:", "Down");
+                telemetry.update();
             } else {
                 actuator.setPower(0);
             }
