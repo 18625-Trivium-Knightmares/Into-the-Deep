@@ -30,6 +30,8 @@ public class SkunkedTeleOp extends LinearOpMode {
             BR.setPower(gamepadpowerright);
             FL.setPower(gamepadpower);
             BL.setPower(gamepadpower);
+            telemetry.addData("yes", "Code did work");
+            telemetry.update();
             if (gamepad1.a) {
                 arm.setPower(1);
                 telemetry.addData("Arm:", "Up");
@@ -65,5 +67,8 @@ public class SkunkedTeleOp extends LinearOpMode {
             }
         }
 
+    } catch(InterruptedException e) {
+            telemetry.addData("Code didn't work", e);
+            telemetry.update();
     }
 }
