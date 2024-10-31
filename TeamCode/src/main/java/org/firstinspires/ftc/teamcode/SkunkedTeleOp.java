@@ -5,19 +5,21 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp (name = "SkunkedTeleOp", group = "TELEOP")
 public class SkunkedTeleOp extends LinearOpMode {
 
     DcMotor FR, FL, BR, BL, arm, actuator, slide;
-
+    Servo servo;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
         FR = hardwareMap.get(DcMotor.class, "rightFront");
         FL = hardwareMap.get(DcMotor.class, "leftFront");
         BR = hardwareMap.get(DcMotor.class, "rightBack");
         BL = hardwareMap.get(DcMotor.class, "leftBack");
         arm = hardwareMap.get(DcMotor.class, "arm");
+        servo = hardwareMap.get(Servo.class, "Claw"); // named Claw for some reason
         actuator = hardwareMap.get(DcMotor.class, "actuator");
         FL.setDirection(DcMotorSimple.Direction.REVERSE);
         BL.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -31,42 +33,30 @@ public class SkunkedTeleOp extends LinearOpMode {
             FL.setPower(gamepadpower);
             BL.setPower(gamepadpower);
             if (gamepad1.a) {
-                arm.setPower(1);
-                telemetry.addData("Arm:", "Up");
-                telemetry.update();
+                //arm.setPower(1);
+                servo.setPosition(0.25);
             } else if (gamepad1.b) {
-                arm.setPower(-1);
-                telemetry.addData("Arm:", "Down");
-                telemetry.update();
+                //arm.setPower(-1);
+                servo.setPosition(0.5);
             } else {
-                arm.setPower(0);
+                //arm.setPower(0);
+                servo.setPosition(0);
             }
             if (gamepad1.dpad_up) {
                 slide.setPower(1);
-                telemetry.addData("Slides:", "Up");
-                telemetry.update();
             } else if (gamepad1.dpad_down) {
                 slide.setPower(-1);
-                telemetry.addData("Slides:", "Down");
-                telemetry.update();
             } else {
                 slide.setPower(0);
             }
             if (gamepad1.x) {
                 actuator.setPower(1);
-                telemetry.addData("Actuator:", "Up");
-                telemetry.update();
             } else if (gamepad1.y) {
                 actuator.setPower(-1);
-                telemetry.addData("Actuator:", "Down");
-                telemetry.update();
             } else {
                 actuator.setPower(0);
             }
         }
 
-    } catch(InterruptedException e) {
-            telemetry.addData("Code didn't work", e);
-            telemetry.update();
     }
 }
