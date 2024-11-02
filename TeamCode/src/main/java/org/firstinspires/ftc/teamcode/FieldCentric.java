@@ -14,7 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 @TeleOp (name = "Field centric", group = "TELEOP")
 public class FieldCentric extends LinearOpMode {
 
-    DcMotor FR, FL, BR, BL, arm, actuator, slide;
+    DcMotor FR, FL, BR, BL, arm, slide;
     Servo servo;
 
     IMU imu;
@@ -38,7 +38,6 @@ public class FieldCentric extends LinearOpMode {
 
         arm = hardwareMap.get(DcMotor.class, "arm");
         servo = hardwareMap.get(Servo.class, "Claw"); // named Claw for some reason
-        actuator = hardwareMap.get(DcMotor.class, "actuator");
         slide = hardwareMap.get(DcMotor.class, "slide");
 
         // IMU
@@ -76,13 +75,12 @@ public class FieldCentric extends LinearOpMode {
             } else {
                 slide.setPower(0);
             }
-            if (gamepad1.x) {
-                actuator.setPower(1);
-            } else if (gamepad1.y) {
-                actuator.setPower(-1);
-            } else {
-                actuator.setPower(0);
+            if (gamepad1.right_trigger > 0) {
+                arm.setPower(gamepad1.right_trigger);
+            } else if (gamepad1.left_trigger > 0) {
+                arm.setPower(-gamepad1.left_trigger);
             }
+
         }
 
     }
