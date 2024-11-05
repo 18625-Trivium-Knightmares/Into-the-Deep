@@ -15,7 +15,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 public class FieldCentric extends LinearOpMode {
 
     DcMotor FR, FL, BR, BL, arm, slide;
-    Servo servo;
 
     IMU imu;
     IMU.Parameters myIMUparameters;
@@ -37,7 +36,6 @@ public class FieldCentric extends LinearOpMode {
 
 
         arm = hardwareMap.get(DcMotor.class, "arm");
-        servo = hardwareMap.get(Servo.class, "Claw"); // named Claw for some reason
         slide = hardwareMap.get(DcMotor.class, "slide");
 
         // IMU
@@ -58,29 +56,20 @@ public class FieldCentric extends LinearOpMode {
 
             fieldCentric();
 
-            if (gamepad1.a) {
-                //arm.setPower(1);
-                servo.setPosition(0.25);
-            } else if (gamepad1.b) {
-                //arm.setPower(-1);
-                servo.setPosition(0.5);
-            } else {
-                //arm.setPower(0);
-                servo.setPosition(0);
-            }
             if (gamepad1.dpad_up) {
-                slide.setPower(1);
+                slide.setPower(0.8);
             } else if (gamepad1.dpad_down) {
-                slide.setPower(-1);
+                slide.setPower(-0.8);
             } else {
                 slide.setPower(0);
             }
-            if (gamepad1.right_trigger > 0) {
-                arm.setPower(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0) {
-                arm.setPower(-gamepad1.left_trigger);
+            if(gamepad1.right_trigger > 0.4){
+                arm.setPower(-0.75);
+            } else if(gamepad1.left_trigger > 0.4){
+                arm.setPower(0.5);
+            } else{
+                arm.setPower(-0.05);
             }
-
         }
 
     }
